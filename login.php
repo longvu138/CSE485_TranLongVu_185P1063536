@@ -46,7 +46,7 @@
       $_SESSION['id'] = $id;
       echo $_SESSION['status'];
       if ($_SESSION['status'] == 1) {
-        header("location:usereditpage.php");
+        header("location:usercreatecv.php");
       } else {
         if ($_SESSION['status'] == 0) {
           header("location:trangquantri.php");

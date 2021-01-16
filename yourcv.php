@@ -167,7 +167,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
 
     <!-- About -->
     <div class="container about" style="    margin-top: 3em;">
-        <div class="h1 text-center mb-4 title"><i class="far fa-user" style="font-weight: 800;color:#0010ccc7"> Thông Tin</i> </div>
+        <div class="h1 text-center mb-4 title"><i class="far fa-user" style="font-weight: 800;color:#0010ccc7"> Thông Tin Cơ Bản</i> </div>
         <div class="about">
             <div class="card" data-aos="fade-up" data-aos-offset="10">
                 <div class="row">
@@ -183,10 +183,10 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                                 <div class="col-sm-4"><strong>Họ và Tên:</strong></div>
                                 <div class="col-sm-8"> <?php echo $info[1] ?></div>
                             </div>
-                            <!-- <div class="row mt-3 info">
-                                <div class="col-sm-4"><strong> <i style="font-size: 20px;" class="fas fa-envelope-open"></i> Email:</strong></div>
-                                <div class="col-sm-8"><a href="https://www.gmail.com">tranlongvu138@gmail.com</a></div>
-                            </div> -->
+                            <div class="row mt-3 info">
+                                <div class="col-sm-4"><strong> <i style="font-size: 25px;" class="fas fa-venus-mars"></i> Giới tính</strong></div>
+                                <div class="col-sm-8"><a href="https://www.gmail.com"><?php echo $info[3] ?></a></div>
+                            </div>
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong><i class="fas fa-birthday-cake"></i></i> Sinh Nhật:</strong></div>
                                 <div class="col-sm-8"><?php
@@ -197,6 +197,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                                 <div class="col-sm-4"><strong><i style="font-size: 20px;" class="fas fa-phone"></i> Liên Hệ:</strong></div>
                                 <div class="col-sm-8"><?php echo $contact[4]; ?></div>
                             </div>
+                            
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong><i style="font-size: 20px;" class="far fa-envelope"></i> Email:</strong></div>
                                 <div class="col-sm-8"><?php echo $contact[1]; ?></div>
@@ -223,7 +224,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                     </div>
                     <div class="col-lg-12 col-md-12  " style=" padding:20px 50px;">
                         <h1 class="text-center" style="color:#0010ccc7"><i class="fas fa-pen-fancy"></i> About Me</h1>
-                        <p> <?php echo $info[4] ?></p>
+                        <p style="font-size: 20px;"> <?php echo $info[4] ?></p>
                     </div>
                 </div>
             </div>
@@ -243,7 +244,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
 
 
                             echo '    <div class="col-md-6">';
-                            echo    '        <div class="progress-container progress-primary"><span style="font-size: 20px;" class="progress-badge"><i style="color: #007bff;margin: 0 5px;" class="fab fa-html5"></i>' . $skilllist[1] . '</span>';
+                            echo    '        <div class=" progress-container progress-primary"><span style="font-size: 25px; font-weight:900;" class="progress-badge">' . $skilllist[1] . '</span>';
                             echo    '            <div class="progress" style="margin:15px 0px">';
                             echo    '               <div class="progress-bar progress-bar-primary" data-aos="progress-full" data-aos-offset="10" data-aos-duration="2000" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ' . $skilllist[2] . '%;"></div><span class="progress-value"></span>';
                             echo    '            </div>';

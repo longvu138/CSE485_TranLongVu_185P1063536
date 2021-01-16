@@ -77,7 +77,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         ?>
         <div class="text-center" style=" margin-bottom: 80px;">
             <img src="upload/<?php echo $avatar['avatar']; ?>" style="width:300px; height:300px; border-radius:50%" alt="">
-            <form action="usereditpage.php" method="post" enctype="multipart/form-data">
+            <form action="userceatecv.php" method="post" enctype="multipart/form-data">
                 <label for="">
                     <h5 style=" margin-top: 15px;"></h5>
                 </label><br>
@@ -99,10 +99,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                     echo $sql;
                     if (mysqli_query($conn, $sql)) {
 
-                        // echo "upload thành công <br/>";
-                        // echo 'Dường dẫn: upload/' . $_FILES['fileUpload']['name'] . '<br>';
-                        // echo 'Loại file: ' . $_FILES['fileUpload']['type'] . '<br>';
-                        // echo 'Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB';         
+                            
                         echo " <script> alert(' cập nhật avatar thành công') </script>";
                         header("Refresh:0");
                     }
@@ -125,12 +122,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                     <label for="">Sinh Nhật <span>(*)</span></label>
                     <input style="border-radius: 20px;margin-bottom: 15px;" type="date" name="date" class="form-control " id="" value="" required>
                     <label for="">Giới Tính</label></br>
-                    <!-- <select style="border-radius: 20px;margin-bottom: 15px;" name="gender" class="form-control gender" id="gender" >
-                        <label for="">Giới Tính <span>(*)</span></label>
-                        <option class="text-center" value="-- lựa chọn giới tính---"></option>
-                        <option class="text-center" value="nam"> Nam</option>
-                        <option class="text-center" value="nữ"> Nữ</option>
-                    </select> -->
+                    
                     <div class="form-row" style="    font-size: 20px;
     padding: 0px;
     margin: 0;
@@ -272,19 +264,12 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
 
                 </div>
             </div>
-            <hr>
+           
             <input style="margin-bottom:15px" type="submit" name="submit" class="btn btn-primary text-center" value="Tạo mới">
         </form>
     </div>
 
-    <!-- <div class="container">
-        <div class="page-header">
-            <h3>Edit Page</h3>
-        </div>
-        <div id="content">Instruction: Double click this message to edit the content. To save, just click outside of the text area. And that is it. If you want to include html elements, just change the script from 'text()' to 'html()' when declaring the current variable and when changing the content of the div #content - from '$("#content").text(content);' to '$("#content").html(content);'.
-        </div>
-    </div> -->
-
+ 
 
     </div>
     <!-- Optional JavaScript -->
