@@ -88,7 +88,7 @@ if (isset($_POST["submit"])) {
     "INSERT INTO `table_cv` (`user_id`) VALUES  ($id);". 
         "SELECT @cv_id := `cv_id` FROM `table_cv` WHERE `user_id` = $id; " .
         "INSERT INTO `informations` (`fullname`,`birthday`,`gender`,`about`,`cv_id`) VALUES ('$name','$dateofbirth','$gender','$about',@cv_id); " .
-        "INSERT INTO `contacts` (`email`,`facebook`,`github`,`phone`,`city`,`district`,`address1`,`cv_id`) VALUES ('$email','$facebook','$github','$numberphone','$nametinh','$namehuyen','$namexa',@cv_id); " .
+        "INSERT INTO `contacts` (`email`,`facebook`,`github`,`phone`,`city`,`district`,`address`,`cv_id`) VALUES ('$email','$facebook','$github','$numberphone','$nametinh','$namehuyen','$namexa',@cv_id); " .
         $sqlAddAll .
         "COMMIT;";
         echo $sql;

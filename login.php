@@ -70,10 +70,7 @@
       <input type="password" id="email" name="password" class="signup-input" placeholder="nhập vào mật khẩu" required>
       <button type="submit" name="dangnhap" class="signup-submit">Sign up</button>
     </form>
-    <p style="margin-bottom:15px ; "class="signup-already">
-      <a href="forgetpass.php" class="signup-login-link">Quên Mật Khẩu?</a>
-
-    </p>
+    
     <p class="signup-already">
 
       <a href="signup.php" class="signup-login-link">Đăng Ký</a>

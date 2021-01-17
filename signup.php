@@ -39,13 +39,13 @@
         else {
             // $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
             $sql = "INSERT INTO users (username,email, password) 	VALUES ('$username','$email', '$password1')";
-        //    echo $hashed_password;
-           echo $sql;
-            // if (mysqli_query($conn, $sql)) {
-            //     echo  '<script language="javascript">alert("Đăng Ký thành công"); window.location="login.php";</script>';
-            // } else {
-            //     echo  '<script language="javascript">alert("Đăng ký thất bại"); window.location="login.php";</script>';
-            // }
+        
+          
+            if (mysqli_query($conn, $sql)) {
+                echo  '<script language="javascript">alert("Đăng Ký thành công"); window.location="login.php";</script>';
+            } else {
+                echo  '<script language="javascript">alert("Đăng ký thất bại"); window.location="login.php";</script>';
+            }
         }
     }
     ?>

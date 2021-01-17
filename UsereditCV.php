@@ -48,9 +48,9 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         $province = $_POST['province'];
         $district = $_POST['district'];
         $ward = $_POST['ward'];
-        $email = $_POST['email'];
-        $facebook = $_POST['facebook'];
-        $github = $_POST['github'];
+        $email = trim($_POST['email']);
+        $facebook = trim($_POST['facebook']);
+        $github = trim($_POST['github']);
         $about = $_POST['about'];
         $about = str_replace( array("'") , '', $about ); 
         $sqlAddAll = "";
@@ -101,7 +101,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
          $sql = "START TRANSACTION; " .
             "SELECT @cv_id := `cv_id` FROM `table_cv` WHERE `user_id` = $user_id; " .
             "UPDATE `informations` SET `fullname` = '$name', `birthday` = '$dateofbirth', `gender` = '$gender', `about` = '$about' WHERE `cv_id` = @cv_id; " .
-            "UPDATE `contacts` SET `email` = '$email',`facebook`='$facebook',`github`='$github', `phone` = '$numberphone', `city` = '$province', `district` = '$district', `address1` = '$ward' WHERE `cv_id` = @cv_id; " .
+            "UPDATE `contacts` SET `email` = '$email',`facebook`='$facebook',`github`='$github', `phone` = '$numberphone', `city` = '$province', `district` = '$district', `address` = '$ward' WHERE `cv_id` = @cv_id; " .
             $sqlAddAll .
             "COMMIT;";
            include_once"connect.php";
