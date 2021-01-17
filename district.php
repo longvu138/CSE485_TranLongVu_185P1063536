@@ -1,5 +1,5 @@
 <?php
-require"config.php";
+require"connect.php";
     $key=$_POST['districtid'];
     $sql="SELECT * FROM ward WHERE districtid='$key'";
     $query=mysqli_query($conn,$sql);

@@ -1,5 +1,5 @@
 <?php
-require"config.php";
+require"connect.php";
     $key=$_POST['idprovince'];
   
     $sql="SELECT * FROM district WHERE provinceid='$key'";
