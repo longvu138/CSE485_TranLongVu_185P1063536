@@ -171,7 +171,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         <?php
         if (isset($_POST['up']) && isset($_FILES['fileUpload'])) {
             if ($_FILES['fileUpload']['error'] > 0)
-                echo "Upload lỗi rồi!";
+                echo " <script> alert(' cập nhật avatar không thành công!') </script>";
             else {
                 if ($_FILES["fileUpload"]["type"] == "image/jpeg" || $_FILES["fileUpload"]["type"] == "image/png") {
                     $path = "upload/";
@@ -189,6 +189,10 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                         echo " <script> alert(' cập nhật avatar thành công') </script>";
                         header("Refresh:0");
                     }
+                }
+                else{
+                    echo " <script> alert(' file bạn vừa chọn không phải file ảnh vui lòng chọn lại') </script>";
+                    header("Refresh:0");
                 }
             }
         }
