@@ -5,6 +5,16 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
     exit();
 }
 ?>
+  <?php
+        $user_id = $_SESSION["id"];
+        include_once "connect.php";
+        
+        $result = mysqli_fetch_row(mysqli_query($conn, "SELECT count(`cv_id`) FROM `table_cv` WHERE `user_id` = $user_id;"));
+        ($result);
+        if ((isset($result[0] ))&& ($result[0] == 1)) {
+            header("Location: usereditcv.php");
+        }
+        ?>
 <!doctype html>
 <html lang="en">
 
@@ -43,8 +53,8 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                                 <p style="font-size: 20px;color:white;" class="text-uppercase"> <?php echo " Xin chào " . $_SESSION['username'] ?></p>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="yourcv.php"><i style="font-weight: 900;font-size: 18px;" class="far fa-eye"> Xem CV của bạn</i></a>
-                                <a class="dropdown-item" href="#"> <i style="font-size: 18px" class="fas fa-user-edit"> Chỉnh Sửa Thông Tin </i></a>
+                                <!-- <a class="dropdown-item" href="yourcv.php"><i style="font-weight: 900;font-size: 18px;" class="far fa-eye"> Xem CV của bạn</i></a> -->
+                                <!-- <a class="dropdown-item" href="usereditcv.php"> <i style="font-size: 18px" class="fas fa-user-edit"> Chỉnh Sửa Thông Tin </i></a> -->
                                 <a class="dropdown-item" href="logout.php"> <i style="font-size: 18px" class="fas fa-sign-out-alt"> Đăng Xuất</i></a>
 
 
@@ -66,47 +76,8 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                 font-size: 20px;
             }
         </style>
-        <?php
-        $user_id = $_SESSION["id"];
-        include_once "connect.php";
-        $result = mysqli_fetch_row(mysqli_query($conn, "SELECT `cv_id` FROM `table_cv` WHERE `user_id` = $user_id;"));
-        if (isset($result[0])) {
-            $cv_id = $result[0];
-            $avatar = mysqli_fetch_array(mysqli_query($conn, "SELECT `avatar` FROM `informations` WHERE `cv_id` = $cv_id;"));
-        }
-        ?>
-        <div class="text-center" style=" margin-bottom: 80px;">
-            <img src="upload/<?php echo $avatar['avatar']; ?>" style="width:300px; height:300px; border-radius:50%" alt="">
-            <form action="userceatecv.php" method="post" enctype="multipart/form-data">
-                <label for="">
-                    <h5 style=" margin-top: 15px;"></h5>
-                </label><br>
-                <input type="file" name="fileUpload" value="">
-                <input type="submit" name="up" value="Cập Nhật Avatar">
-            </form>
-        </div>
-        <?php
-        if (isset($_POST['up']) && isset($_FILES['fileUpload'])) {
-            if ($_FILES['fileUpload']['error'] > 0)
-                echo "Upload lỗi rồi!";
-            else {
-                if ($_FILES["fileUpload"]["type"] == "image/jpeg" || $_FILES["fileUpload"]["type"] == "image/png") {
-                    $path = "upload/";
-                    $tmp_name = $_FILES['fileUpload']['tmp_name'];
-                    $image = $_FILES['fileUpload']['name'];
-                    move_uploaded_file($tmp_name, $path . $image);
-                    $sql = "UPDATE `informations` SET `avatar` = '$image' WHERE `informations`.`cv_id` = $cv_id;";
-                    echo $sql;
-                    if (mysqli_query($conn, $sql)) {
-
-                            
-                        echo " <script> alert(' cập nhật avatar thành công') </script>";
-                        header("Refresh:0");
-                    }
-                }
-            }
-        }
-        ?>
+      
+       
         <!-- form -->
         <form action="addinformation.php" method="post">
 

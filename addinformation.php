@@ -14,9 +14,10 @@ if (isset($_POST["submit"])) {
     $facebook = $_POST['facebook'];
     $github = $_POST['github'];
     $about=$_POST['about'];
+    
     session_start();
     $id = $_SESSION['id'];
-   
+    
 
     include_once "config.php";
     $sql  = "SELECT name FROM `province` WHERE provinceid='$province'";
@@ -94,7 +95,7 @@ if (isset($_POST["submit"])) {
         
    include_once"connect.php";
     if (mysqli_multi_query($conn, $sql)) {
-        header("location:yourcv.php");
+        header("location:usereditcv.php");
     } else {
         echo "$sql $conn->error";
     }

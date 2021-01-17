@@ -172,10 +172,18 @@
     <div class="content" style=" background-image: linear-gradient(rgba(116, 109, 109, 0.185), #1b1b29), url(./img/mau-background-dep.jpg); height:515px;">
         <div class="text">
             <div class="row">
-                <!-- <div class="col-xs-1-12">
-
-                    <h1>Vui lòng đăng nhập để tạo CV </h1>
-                </div> -->
+                <div class="col-xs-1-12">
+                    <style>
+                    .a{text-decoration: none; 
+                        color:white;}
+                    .a:hover {
+                        text-decoration: none;
+                        color :#ff0000;
+                    }
+                    </style>
+                    <h1 ><a  class="a"href="login.php">Đăng Nhập để tạo CV của bạn !!!!</a></h1>
+                
+                </div>
             </div>
         </div>
     </div>
@@ -200,10 +208,18 @@
                                 <div class="col-sm-4"><strong>Họ và Tên:</strong></div>
                                 <div class="col-sm-8"> Trần Long Vũ</div>
                             </div>
-                            <!-- <div class="row mt-3 info">
+                            <div class="row mt-3 info">
+                                <div class="col-sm-4"><strong> <i style="font-size: 25px;" class="fas fa-venus-mars"></i> Giới tính</strong></div>
+                                <div class="col-sm-8">nam</div>
+                            </div>
+                            <div class="row mt-3 info">
+                                <div class="col-sm-4"><strong><i class="fas fa-birthday-cake"></i></i> Sinh Nhật:</strong></div>
+                                <div class="col-sm-8">13/08/2000</div>
+                            </div>
+                            <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong> <i style="font-size: 20px;" class="fas fa-envelope-open"></i> Email:</strong></div>
                                 <div class="col-sm-8"><a href="https://www.gmail.com">tranlongvu138@gmail.com</a></div>
-                            </div> -->
+                            </div>
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong><i style="font-size: 20px;" class="fas fa-phone"></i> Liên Hệ:</strong></div>
                                 <div class="col-sm-8">0389-709-577</div>
@@ -219,9 +235,7 @@
                                         <li><span><i class="fab fa-facebook"></i></span>
                                             <a href="">FaceBook</a>
                                         </li>
-                                        <li><span><i class="fa fa-envelope"></i></span>
-                                            <a href="">Gmail</a>
-                                        </li>
+                                        
                                         <li><span><i class="fab fa-github"></i></span>
                                             <a href="">GitHub</a>
                                         </li>
@@ -386,7 +400,7 @@
     </div>
     </div>
     </div>
-    <div class="container  contact-form">
+    <!-- <div class="container  contact-form">
         <form method="post">
             <h2><i style="font-size:35px" class="fas fa-paper-plane"></i> Liên Hệ</h2>
             <div class="row">
@@ -407,11 +421,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
     <style>
         .spacer {
             flex: 1;

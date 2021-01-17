@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
-    header("Location: login.php");
-    exit();
-}
+// session_start();
+// if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
+//     header("Location: login.php");
+//     exit();
+// }
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,9 +21,9 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="script.js"></script>
+
 </head>
 <style>
     :root {
@@ -147,9 +147,8 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
 
 <body>
     <?php
-
-    $user_id = $_SESSION["id"];
-
+ session_start();
+    $user_id = $_GET['id'];
     include("connect.php");
     $result = mysqli_fetch_row(mysqli_query($conn, "SELECT `cv_id` FROM `table_cv` WHERE `user_id` = $user_id;"));
     if (isset($result[0])) {
@@ -164,11 +163,49 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
     }
 
     ?>
+    <style>
+        .nav {
+            z-index: 9999999999999999999999999999;
+            left: 0;
+            position: fixed;
+            top: 0;
 
+            right: 0;
+            font-size: 25px;
+
+        }
+
+        .nava {
+            color: Black !important;
+            margin: 0 10px 10px 10px;
+            padding-bottom: 0px;
+        }
+
+        .nava:hover {
+            border-bottom: 4px solid yellowgreen;
+        }
+    </style>
+   
+  
+        <ul class="nav justify-content-center nav">
+            <li class="nav-item  ">
+                <a class="nav-link nava" href="#info">Thông Tin Cá Nhân</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nava" href="#skill">Kỹ Năng</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nava" href="#edu">Học Vấn</a>
+            </li>
+            <li class="nav-item " >
+                <a class="nav-link nava" href="#exp">Kinh Nghiệm</a>
+            </li>
+        </ul>
+   
     <!-- About -->
-    <div class="container about" style="    margin-top: 3em;">
-        <div class="h1 text-center mb-4 title"><i class="far fa-user" style="font-weight: 800;color:#0010ccc7"> Thông Tin Cơ Bản</i> </div>
-        <div class="about">
+    <div class="container about" id="info" style="    margin-top: 8em;">
+        <div  class="h1 text-center mb-4 title"><i class="far fa-user" style="font-weight: 800;color:#0010ccc7"> Thông Tin Cá Nhân</i> </div>
+        <div class="about ">
             <div class="card" data-aos="fade-up" data-aos-offset="10">
                 <div class="row">
                     <div class="col-lg-5 col-md-12 ">
@@ -185,7 +222,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                             </div>
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong> <i style="font-size: 25px;" class="fas fa-venus-mars"></i> Giới tính</strong></div>
-                                <div class="col-sm-8"><a href="https://www.gmail.com"><?php echo $info[3] ?></a></div>
+                                <div class="col-sm-8" style=" text-transform: capitalize;"><?php echo $info[3] ?></div>
                             </div>
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong><i class="fas fa-birthday-cake"></i></i> Sinh Nhật:</strong></div>
@@ -197,10 +234,10 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                                 <div class="col-sm-4"><strong><i style="font-size: 20px;" class="fas fa-phone"></i> Liên Hệ:</strong></div>
                                 <div class="col-sm-8"><?php echo $contact[4]; ?></div>
                             </div>
-                            
+
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong><i style="font-size: 20px;" class="far fa-envelope"></i> Email:</strong></div>
-                                <div class="col-sm-8"><?php echo $contact[1]; ?></div>
+                                <div class="col-sm-8"><a href="https://www.gmail.com"><?php echo $contact[1]; ?></a></div>
                             </div>
                             <div class="row mt-3 info">
                                 <div class="col-sm-4"><strong><i style="font-size: 20px;" class="fas fa-map-marked"></i> Địa Chỉ:</strong></div>
@@ -232,8 +269,8 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         </div>
     </div>
     <!-- Skin -->
-    <div class="container skin">
-        <div class="h1 text-center mb-4 title" style="font-weight: 800;color:#0010ccc7"><i class="fab fa-codepen"> Kỹ Năng</i></div>
+    <div class="container skin" id="skill">
+        <div class="h1 text-center mb-4 title" style="font-weight: 800;color:#0010ccc7;    margin: 100px 0px 50px 0px !important;"><i class="fab fa-codepen"> Kỹ Năng</i></div>
         <div class="about">
             <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
 
@@ -258,7 +295,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
             </div>
         </div>
 
-        <div class="h1 text-center mb-4 title" style="font-weight: 800; margin-top: 30px;color:#0010ccc7;  "><i class="fas fa-user-graduate"></i> Học Vấn</div>
+        <div class="h1 text-center mb-4 title" id="edu" style="font-weight: 800; margin-top: 30px;color:#0010ccc7;margin: 100px 0px 50px 0px !important;  "><i class="fas fa-user-graduate"></i> Học Vấn</div>
 
         <div class="container containerer">
             <div class="timeline">
@@ -279,11 +316,11 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         </div>
 
         <!-- Exp -->
-        <div class="h1 text-center mb-4 title" style="font-weight: 800;color:#0010ccc7;"><i class="fas fa-align-center"></i> Kinh Nghiệm</div>
+        <div class="h1 text-center mb-4 title" style="font-weight: 800;color:#0010ccc7; margin: 100px 0px 50px 0px !important;"><i class="fas fa-align-center"></i> Kinh Nghiệm</div>
         <div class="container containerer">
 
 
-            <div class="timeline">
+            <div class="timeline" id="exp">
 
                 <ul> <?php
                         foreach ($exp as  $explist) {
@@ -302,42 +339,54 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         </div>
     </div>
     </div>
-    <div class="container  contact-form">
-        <form method="post">
-            <h2><i style="font-size:35px" class="fas fa-paper-plane"></i> Liên Hệ</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-   
+    <style>
+        .spacer {
+            flex: 1;
+        }
+
+        /* make it visible for the purposes of demo */
+        .footer {
+            margin-top: 100px;
+            height: 70px;
+            background-color: #cacaca;
+        }
+    </style>
+    <div class="spacer"></div>
+    <footer class="footer text-center " >
+        <h5 style="line-height: 70px;">  cảm ơn bạn đã xem!!! 2021  &copy <?php echo $info[1] ?></h5>
+    </footer>
+    
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
 
-
-
+    <script>
+        $("a[href*='#']:not([href='#])").click(function() {
+            let target = $(this).attr("href");
+            $('html,body').stop().animate({
+                scrollTop: $(target).offset().top
+            }, 1000);
+            event.preventDefault();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll > 50) {
+                    $(".nav").css("background", " #bdecfc");
+                    $(".nav").css("transition", "0.5s");
+                    $(".nava").css("color", "white !important");
+                } else {
+                    $(".nav").css("background", "");
+                }
+            })
+        });
+    </script>
 </body>
 
 </html>

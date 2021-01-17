@@ -52,7 +52,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         $facebook = $_POST['facebook'];
         $github = $_POST['github'];
         $about = $_POST['about'];
-
+        $about = str_replace( array("'") , '', $about ); 
         $sqlAddAll = "";
 
         foreach ($edu as $edulist) {
@@ -98,7 +98,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
         }
 
 
-            $sql = "START TRANSACTION; " .
+         $sql = "START TRANSACTION; " .
             "SELECT @cv_id := `cv_id` FROM `table_cv` WHERE `user_id` = $user_id; " .
             "UPDATE `informations` SET `fullname` = '$name', `birthday` = '$dateofbirth', `gender` = '$gender', `about` = '$about' WHERE `cv_id` = @cv_id; " .
             "UPDATE `contacts` SET `email` = '$email',`facebook`='$facebook',`github`='$github', `phone` = '$numberphone', `city` = '$province', `district` = '$district', `address1` = '$ward' WHERE `cv_id` = @cv_id; " .
@@ -133,8 +133,9 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                                 <p style="font-size: 20px;color:white;" class="text-uppercase"> <?php echo " Xin chào " . $_SESSION['username'] ?></p>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="yourcv.php"><i style="font-weight: 900;font-size: 18px;" class="far fa-eye"> Xem CV của bạn</i></a>
-                               
+                                <a class="dropdown-item" href="yourcv.php?id=<?php echo$user_id ?>"><i style="font-weight: 900;font-size: 18px;" class="far fa-eye"> Xem CV của bạn</i></a>
+                                <a class="dropdown-item" href="useraddinfo.php"> <i style="font-size: 18px" class="fas fa-user-edit"> Thêm Thông Tin </i></a>
+                                <a class="dropdown-item" href="changepass.php"> <i style="font-size: 18px" class="fas fa-key"> Đổi Mật Khẩu </i></a>
                                 <a class="dropdown-item" href="logout.php"> <i style="font-size: 18px" class="fas fa-sign-out-alt"> Đăng Xuất</i></a>
 
 
@@ -209,11 +210,11 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
 
                     <div class="form-row" style="font-size: 20px; padding: 0px; margin: 0; justify-content: center;">
                         <div class="col-md-4">
-                            <input type="radio" name="gender" value="nam"<?php if (trim($info[3]) == "nam") echo "checked"; ?>>nam
+                            <input type="radio" name="gender" value="Nam"<?php if (trim($info[3]) == "Nam") echo "checked"; ?>>nam
                         </div>
                         
                         <div class="col-md-4">
-                            <input type="radio" name="gender" value="nữ" <?php if (trim($info[3]) == "nữ") echo "checked"; ?>>nữ
+                            <input type="radio" name="gender" value="Nữ" <?php if (trim($info[3]) == "Nữ") echo "checked"; ?>>nữ
                         </div>
                     </div>
                     

@@ -27,8 +27,6 @@
     require_once "connect.php";
     $sql = "SELECT * FROM users where email ='$email' and password = '$password' ";
     $query = mysqli_query($conn, $sql);
-       echo $sql;
-
     $num_rows = mysqli_num_rows($query);
     if ($num_rows == 0) {
       echo " <script> alert(' tài khoản hoặc mật khẩu không chính xác!') </script>";
@@ -47,11 +45,12 @@
       echo $_SESSION['status'];
       if ($_SESSION['status'] == 1) {
         header("location:usercreatecv.php");
-      } else {
-        if ($_SESSION['status'] == 0) {
-          header("location:trangquantri.php");
-        }
-      }
+      } 
+      // else {
+      //   if ($_SESSION['status'] == 0) {
+      //     header("location:admin.php");
+      //   }
+      // }
 
     }
    }
@@ -67,12 +66,12 @@
     <form action="login.php" method="post" class="signup-form" autocomplete="off">
       <label class="signup-label">Email</label>
       <input type="email" id="fullname" name="email" class="signup-input" placeholder="nhập vào địa chỉ email" required>
-      <label class="signup-label">Mật Khẩu</label>
+      <label class="signup-label">Mật Khẩu </label>
       <input type="password" id="email" name="password" class="signup-input" placeholder="nhập vào mật khẩu" required>
       <button type="submit" name="dangnhap" class="signup-submit">Sign up</button>
     </form>
     <p style="margin-bottom:15px ; "class="signup-already">
-      <a href="#" class="signup-login-link">Quên Mật Khẩu?</a>
+      <a href="forgetpass.php" class="signup-login-link">Quên Mật Khẩu?</a>
 
     </p>
     <p class="signup-already">
