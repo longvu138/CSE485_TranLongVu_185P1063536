@@ -53,8 +53,6 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                                 <p style="font-size: 20px;color:white;" class="text-uppercase"> <?php echo " Xin chào " . $_SESSION['username'] ?></p>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <!-- <a class="dropdown-item" href="yourcv.php"><i style="font-weight: 900;font-size: 18px;" class="far fa-eye"> Xem CV của bạn</i></a> -->
-                                <!-- <a class="dropdown-item" href="usereditcv.php"> <i style="font-size: 18px" class="fas fa-user-edit"> Chỉnh Sửa Thông Tin </i></a> -->
                                 <a class="dropdown-item" href="logout.php"> <i style="font-size: 18px" class="fas fa-sign-out-alt"> Đăng Xuất</i></a>
 
 
@@ -154,8 +152,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                 <label class="h3" for="">about me:</label></br>
                 <textarea style="border-radius: 25px;" name="about" id="" class="form-control" rows="4" required></textarea>
             </div>
-            <!-- </form>
-        <form action="b.php" method="post" id='form' style="border: 1px solid;padding: 15px 20px;border-radius: 21px;"> -->
+       
             <div class="form-row">
                 <!-- học vấn -->
                 <div class="form-group col-md-4 ">

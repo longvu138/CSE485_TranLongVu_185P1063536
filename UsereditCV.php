@@ -59,7 +59,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
             $namesc = "tentruong1" . $edulist[0];
 
             if (isset($_POST[$namesc])) {
-                $tentruong = $_POST["tentruong1" . $edulist[0]];
+                $tentruong = trim($_POST["tentruong1" . $edulist[0]]);
                 $chuyennganh = $_POST["chuyennganh1" . $edulist[0]];
                 $fromyearhv = $_POST["fromyearhv1" . $edulist[0]];
                 $toyearhv = $_POST["toyearhv1" . $edulist[0]];
@@ -134,7 +134,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="yourcv.php?id=<?php echo$user_id ?>"><i style="font-weight: 900;font-size: 18px;" class="far fa-eye"> Xem CV của bạn</i></a>
-                                <!-- <a class="dropdown-item" href="useraddinfo.php"> <i style="font-size: 18px" class="fas fa-user-edit"> Thêm Thông Tin </i></a> -->
+                                <a class="dropdown-item" href="useraddinfo.php"> <i style="font-size: 18px" class="fas fa-user-edit"> Thêm Thông Tin </i></a>
                                 <a class="dropdown-item" href="changepass.php"> <i style="font-size: 18px" class="fas fa-key"> Đổi Mật Khẩu </i></a>
                                 <a class="dropdown-item" href="logout.php"> <i style="font-size: 18px" class="fas fa-sign-out-alt"> Đăng Xuất</i></a>
 

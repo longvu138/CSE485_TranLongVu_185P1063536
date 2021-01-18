@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 17, 2021 lúc 11:46 AM
+-- Thời gian đã tạo: Th1 17, 2021 lúc 04:58 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.11
 
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contacts` (
   `cont_id` int(10) UNSIGNED NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `github` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` int(10) UNSIGNED NOT NULL,
+  `phone` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `city` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `district` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address1` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cv_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -43,12 +43,12 @@ CREATE TABLE `contacts` (
 -- Đang đổ dữ liệu cho bảng `contacts`
 --
 
-INSERT INTO `contacts` (`cont_id`, `email`, `facebook`, `github`, `phone`, `city`, `district`, `address1`, `cv_id`) VALUES
-(18, 'tranlongvu@gmail.com', '              https://www.facebook.com/', '              https://www.facebook.com/', 389709577, 'Hưng Yên', 'Tiên Lữ', 'Nhật Tân', 40),
-(19, 'tranthu@gmail.com', ' faceebook', ' githuubv', 2246565, 'Thành phố Hà Nội', 'Quận Thanh Xuân', 'Phường Nhân Chính', 41),
-(20, 'tranthu@gmail.com', 'faceebook', 'githuubv', 2246565, 'Thành phố Hà Nội', 'Quận Thanh Xuân', 'Phường Nhân Chính', 42),
-(21, 'lathuhong@gmail.com', '  abc', '  abc', 2134564646, 'Hà Nội', ' Mê Linh', 'Văn Khê', 53),
-(22, 'duy@gmail.co', ' a', ' a', 3215343541, 'Tỉnh Cao Bằng', 'Huyện Thông Nông', 'Xã Cần Yên', 54);
+INSERT INTO `contacts` (`cont_id`, `email`, `facebook`, `github`, `phone`, `city`, `district`, `address`, `cv_id`) VALUES
+(18, 'tranlongvu@gmail.com', 'https://facebook.com', 'https://github.com/longvu138/CSE485_TranLongVu_185P1063536', '389709577', 'Hưng Yên', 'Tiên Lữ', 'Nhật Tân', 40),
+(19, 'tranthu@gmail.com', ' faceebook', ' githuubv', '2246565', 'Thành phố Hà Nội', 'Quận Thanh Xuân', 'Phường Nhân Chính', 41),
+(20, 'tranthu@gmail.com', 'faceebook', 'githuubv', '2246565', 'Thành phố Hà Nội', 'Quận Thanh Xuân', 'Phường Nhân Chính', 42),
+(21, 'lathuhong@gmail.com', '  abc', '  abc', '2134564646', 'Hà Nội', ' Mê Linh', 'Văn Khê', 53),
+(22, 'duy@gmail.co', ' a', ' a', '3215343541', 'Tỉnh Cao Bằng', 'Huyện Thông Nông', 'Xã Cần Yên', 54);
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,7 @@ INSERT INTO `contacts` (`cont_id`, `email`, `facebook`, `github`, `phone`, `city
 
 CREATE TABLE `district` (
   `districtid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `provinceid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -788,7 +788,7 @@ INSERT INTO `district` (`districtid`, `name`, `provinceid`) VALUES
 CREATE TABLE `educations` (
   `edu_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `specialized` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `specialized` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `from_year` int(4) UNSIGNED NOT NULL,
   `to_year` int(4) UNSIGNED NOT NULL,
   `cv_id` int(10) UNSIGNED NOT NULL
@@ -799,8 +799,8 @@ CREATE TABLE `educations` (
 --
 
 INSERT INTO `educations` (`edu_id`, `name`, `specialized`, `from_year`, `to_year`, `cv_id`) VALUES
-(12, '                 THPT Tiên Lữ', 'Học Sinh', 2015, 2018, 40),
-(13, '                 Đại Học Thủy Lợi', 'Công Nghệ ', 218, 2022, 40),
+(12, '                     THPT Tiên Lữ', 'Học Sinh', 2015, 2018, 40),
+(13, '                     Đại Học Thủy Lợi', 'Công Nghệ ', 218, 2022, 40),
 (14, ' thpt tiên lữ', 'học sinh', 2008, 2012, 41),
 (15, ' đại học hà nội', 'tiếng trun', 2018, 2012, 41),
 (16, 'thpt tiên lữ', 'học sinh', 2008, 2012, 42),
@@ -818,8 +818,8 @@ INSERT INTO `educations` (`edu_id`, `name`, `specialized`, `from_year`, `to_year
 
 CREATE TABLE `experiences` (
   `exp_id` int(10) UNSIGNED NOT NULL,
-  `namecompany` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pos` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `namecompany` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pos` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `from_year` int(4) UNSIGNED NOT NULL,
   `to_year` int(4) UNSIGNED NOT NULL,
   `cv_id` int(10) UNSIGNED NOT NULL
@@ -830,8 +830,8 @@ CREATE TABLE `experiences` (
 --
 
 INSERT INTO `experiences` (`exp_id`, `namecompany`, `pos`, `from_year`, `to_year`, `cv_id`) VALUES
-(6, 'comp1', 'cn1', 2012, 2020, 40),
-(7, 'comp2', 'cn2', 2016, 2050, 40),
+(6, 'Công Ty 1', 'công nhân 1', 2012, 2020, 40),
+(7, 'Công Ty 2', 'Công Nhân 2', 2016, 2050, 40),
 (8, 'alimaam', 'nhanvien', 1222, 4445, 41),
 (9, 'alimaam2', 'nhân viên2', 2015, 2016, 41),
 (10, 'alimaam', 'nhanvien', 1222, 4445, 42),
@@ -850,7 +850,7 @@ CREATE TABLE `informations` (
   `info_id` int(10) UNSIGNED NOT NULL,
   `fullname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthday` date NOT NULL,
-  `gender` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` char(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `about` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `cv_id` int(10) UNSIGNED NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'avatar'
@@ -861,7 +861,7 @@ CREATE TABLE `informations` (
 --
 
 INSERT INTO `informations` (`info_id`, `fullname`, `birthday`, `gender`, `about`, `cv_id`, `avatar`) VALUES
-(24, 'Trần Long Vũ', '2000-08-13', 'Nam', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum      ', 40, 'images (2).jfif'),
+(24, 'Trần Long Vũ', '2000-08-13', 'Nam', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum          ', 40, 'images (2).jfif'),
 (25, 'Trần Minh Thu', '1992-08-24', 'Nữ', 'adhajskdnakjsdasljdaskmd ', 41, 'tải xuống (2).jfif'),
 (26, 'Trần Minh Thu', '1992-08-24', 'Nữ', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', 42, 'tải xuống (1).jfif'),
 (27, 'Lã Thu Hồng', '2222-05-23', 'Nữ', 'jadhlaksjdalksjdalskdasldja.sjdkalsdjasd  ', 53, 'images (1).jfif'),
@@ -875,7 +875,7 @@ INSERT INTO `informations` (`info_id`, `fullname`, `birthday`, `gender`, `about`
 
 CREATE TABLE `province` (
   `provinceid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -955,7 +955,7 @@ INSERT INTO `province` (`provinceid`, `name`) VALUES
 
 CREATE TABLE `skills` (
   `skill_id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `levelskill` int(3) UNSIGNED NOT NULL,
   `cv_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -965,9 +965,9 @@ CREATE TABLE `skills` (
 --
 
 INSERT INTO `skills` (`skill_id`, `name`, `levelskill`, `cv_id`) VALUES
-(11, 'css                 ', 66, 40),
-(12, 'php                 ', 70, 40),
-(13, 'C#    ', 62, 40),
+(11, 'css                     ', 66, 40),
+(12, 'php                     ', 70, 40),
+(13, 'C#        ', 62, 40),
 (14, 'tiếng anh ', 53, 41),
 (15, 'tiếng trung ', 52, 41),
 (16, 'tiếng anh', 53, 42),
@@ -1009,9 +1009,9 @@ INSERT INTO `table_cv` (`cv_id`, `user_id`) VALUES
 CREATE TABLE `users` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) UNSIGNED NOT NULL DEFAULT 1
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` smallint(1) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1023,7 +1023,8 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `status`) VALUE
 (3, 'trần minh thu', 'minhthu123@gmail.com', 'abcabc', 1),
 (4, 'tran thu', 'tranthu@gmail.com', 'abcabc', 1),
 (5, 'Thu Hồng', 'lathuhong@gmail.com', 'abcabc', 1),
-(6, 'Duy Xuyến', 'duyxuyen@gmail.com', 'abcabc', 1);
+(6, 'Duy Xuyến', 'duyxuyen@gmail.com', 'abcabc', 1),
+(11, 'trần anh liên', 'tranlien@gmail.com', 'anhlien12', 1);
 
 -- --------------------------------------------------------
 
@@ -1033,7 +1034,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `status`) VALUE
 
 CREATE TABLE `ward` (
   `wardid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `districtid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -12334,7 +12335,7 @@ ALTER TABLE `table_cv`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
