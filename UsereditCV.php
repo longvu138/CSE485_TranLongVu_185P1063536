@@ -262,7 +262,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                         echo '  <div class="form-group text-center">';
                         echo '  </div>                ';
                         echo ' <div class="hocvan">';
-                        echo ' <label for="">Tên Trường <span>(*)</span></label>';
+                        echo ' <label for="">Tên Trường  <a  style="color:black;margin-left:15px" href="deleteedu.php?id=' .$edulist[0].'"><i class="fas fa-trash"></i></a></label>';
                         echo ' <input style="border-radius: 20px;margin-bottom: 15px;" type="text" name="tentruong1' . $edulist[0] . '" class="form-control " id="" value="' . $edulist[1] . '" >';
                         echo ' <label for="">Chuyên ngành <span>(*)</span></label>';
                         echo ' <input style="border-radius: 20px;margin-bottom: 15px;" type="text" name="chuyennganh1' . $edulist[0] . '" class="form-control " id="" value="' . $edulist[2] . '" >';
@@ -289,7 +289,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                         echo ' <div class="form-group text-center">';
                         echo ' </div>';
                         echo ' <div class="skill " style="    padding: 0 15px 0 15px">';
-                        echo '     <label for="">Tên kỹ năng <span>(*)</span></label>';
+                        echo '     <label for="">Tên kỹ năng  <a  style="color:black;margin-left:15px" href="deleteskill.php?id=' .$skilllist[0].'"><i class="fas fa-trash"></i></a></label>';
                         echo '     <input style="border-radius: 20px;margin-bottom: 15px;" type="text" name="nameskill1' . $skilllist[0] . '" class="form-control " id="" value="' . $skilllist[1] . ' " >';
                         echo '     <div class="row">';
                         echo '         <div class="form-group col-md-6">';
@@ -308,7 +308,7 @@ if (!isset($_SESSION['status']) || ($_SESSION['status'] != 1)) {
                         <?php
                         foreach ($exp as  $explist) {
                             echo '  <div class="kinhnghiem ">';
-                            echo ' <label for="">Tên Công Ty <span>(*)</span></label>';
+                            echo ' <label for="">Tên Công Ty <a  style="color:black;margin-left:15px" href="deleteexp.php?id=' .$explist[0].'"><i class="fas fa-trash"></i></a></label>';
                             echo ' <input style="border-radius: 20px;margin-bottom: 15px;" type="text" name="namecongty1' . $explist[0] . '" class="form-control " id="" value="' . $explist[1] . '"  >';
                             echo ' <label for="">Chức Vụ<span>(*)</span></label>';
                             echo ' <input style="border-radius: 20px;margin-bottom: 15px;" type="text" name="chucvu1' . $explist[0] . '" class="form-control " id="" value="' . $explist[2] . '"  >';
